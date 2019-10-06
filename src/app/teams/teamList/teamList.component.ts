@@ -1,7 +1,7 @@
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
-import { Employee } from 'src/app/models/team';
+import { Team } from 'src/app/models/team';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class TeamListComponent implements OnInit {
 
-  list: Employee[];
+  list: Team[];
   constructor(private service: TeamService,
     private firestore: AngularFirestore,
     private toastr:ToastrService) { }
@@ -22,7 +22,7 @@ export class TeamListComponent implements OnInit {
         return {
           id: item.payload.doc.id,
           ...item.payload.doc.data()
-        } as Employee;
+        } as Team;
       })
     });
   }

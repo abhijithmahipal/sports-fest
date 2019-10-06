@@ -12,13 +12,15 @@ import { HomeComponent } from './teams/home';
 import { AddTeamComponent } from './teams/addTeam/addTeam.component';
 import { TeamListComponent } from './teams/teamList/teamList.component';
 import { TeamService } from './services/team.service';
+import { AddPlayerComponent } from './teams/add-player/add-player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddTeamComponent,
     TeamListComponent,
-    HomeComponent
+    HomeComponent,
+    AddPlayerComponent
   ],
   imports: [
     BrowserModule,
