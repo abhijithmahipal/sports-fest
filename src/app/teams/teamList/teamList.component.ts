@@ -17,7 +17,7 @@ export class TeamListComponent implements OnInit {
     private toastr:ToastrService) { }
 
   ngOnInit() {
-    this.service.getEmployees().subscribe(actionArray => {
+    this.service.getTeams().subscribe(actionArray => {
       this.list = actionArray.map(item => {
         return {
           id: item.payload.doc.id,
@@ -32,9 +32,9 @@ export class TeamListComponent implements OnInit {
   // }
 
   onDelete(id: string) {
-    if (confirm("Are you sure to delete this record?")) {
+    if (confirm("Are you sure to delete this team?")) {
       this.firestore.doc('teams/' + id).delete();
-      this.toastr.warning('Deleted successfully','EMP. Register');
+      this.toastr.warning('Deleted successfully','Team Registration');
     }
   } 
 
