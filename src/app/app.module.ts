@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from "@angular/fire";
-import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { FormsModule } from "@angular/forms";
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
- 
+import { environment } from 'src/environments/environment';
+
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
-import { environment } from 'src/environments/environment';
 import { HomeComponent } from './teams/home';
 import { AddTeamComponent } from './teams/addTeam/addTeam.component';
 import { TeamListComponent } from './teams/teamList/teamList.component';

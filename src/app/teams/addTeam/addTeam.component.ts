@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamService } from 'src/app/services/team.service';
 import { NgForm } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
+import { Team } from '../../models/team';
+import { TeamService } from '../../services/team.service';
 
 @Component({
-  selector: 'app-addTeam',
+  selector: 'app-addteam',
   templateUrl: './addTeam.component.html',
   styleUrls: ['./addTeam.component.css']
 })
 export class AddTeamComponent implements OnInit {
-
+  teamData: Team;
   constructor(private service: TeamService,
-    private firestore: AngularFirestore,
     private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -20,26 +19,16 @@ export class AddTeamComponent implements OnInit {
   }
 
   resetForm(form?: NgForm) {
-    if (form != null)
-      form.resetForm();
-    this.service.formData = {
-      id: null,
-      name: '',
-      captain: '',
-      manager1: '',
-      manager2: '',
-    }
+    this.teamData = new Team();
+    this.teamData.name = null;
+    this.teamData.captain = null;
+    this.teamData.manager1 = null;
+    this.teamData.manager2 = null;
   }
 
-  onSubmit(form: NgForm) {
-    let data = Object.assign({}, form.value);
-    delete data.id;
-    if (form.value.id == null)
-      this.firestore.collection('teams').add(data);
-    else
-      this.firestore.doc('teams/' + form.value.id).update(data);
-    this.resetForm(form);
+  addTeam() {
+    this.service.addTeam(this.teamData);
+    this.resetForm();
     this.toastr.success('Submitted successfully', 'Team Registration');
   }
-
 }
