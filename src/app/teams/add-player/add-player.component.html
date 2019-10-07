@@ -1,23 +1,26 @@
-<h1 class="display-4">Team Registration</h1>
-<form #form="ngForm" autocomplete="off" (submit)="onSubmit(form)">
-  <input type="hidden" name="id" #id="ngModel" [(ngModel)]="service.formData.id">
+<h1 class="display-4">New Player</h1>
   <div class="form-group">
-    <input name="name" #name="ngModel" [(ngModel)]="service.formData.name" class="form-control" placeholder="Team name" required>
-    <div *ngIf="name.invalid && name.touched" class="validation-error">This field is required.</div>
+    <input name="fullName"  [(ngModel)]="playerData.fullName" class="form-control" placeholder="Player full name">
   </div>
   <div class="form-group">
-    <input name="captain" #captain="ngModel" [(ngModel)]="service.formData.captain" class="form-control" placeholder="Captain">
+    <input name="shortName"  [(ngModel)]="playerData.shortName" class="form-control" placeholder="Nick name">
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <input name="manager1" #manager1="ngModel" [(ngModel)]="service.formData.manager1" class="form-control" placeholder="Manager 2">
+      <input name="jerseyNumber"  [(ngModel)]="playerData.jerseyNumber" class="form-control" placeholder="Jersey Number">
     </div>
-    <div class="form-group  col-md-6">
-      <input name="manager2" #manager2="ngModel" [(ngModel)]="service.formData.manager2" class="form-control" placeholder="Manager2">
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" id="teamName" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <div>{{ selectedTeam.name }}</div>
+      </button>
+      <div class="dropdown-menu">
+        <button class="dropdown-item" *ngFor="let team of teamList" (click)="setTeam(team)">
+          {{ team.name }}
+        </button>
+      </div>
     </div>
   </div>
   <div class="form-group">
-    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block btn-info">Add</button>
+    <button type="submit" (click)="addPlayer()"  class="btn btn-lg btn-block btn-info">Save Player</button>
   </div>
-
-</form>
