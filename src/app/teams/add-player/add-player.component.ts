@@ -14,19 +14,14 @@ import * as firebase from 'firebase';
 })
 export class AddPlayerComponent implements OnInit {
   playerData: Player;
-  teamList: Team[];
+  teamList: any;
   selectedTeam: Team;
   constructor(private service: TeamService,
     private toastr: ToastrService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.resetForm();
-    this.service.getTeams().subscribe(res=>this.teamList = res.map(item => {
-      return {
-        id: item.payload.doc.id,
-        ...item.payload.doc.data()
-      } as Team;
-    }));  
+    this.service.getTeams().subscribe(res => this.teamList = res);
   }
   
   setTeam(team: Team){

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { Team } from 'src/app/models/team';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-team-list',
@@ -16,15 +17,8 @@ export class TeamListComponent implements OnInit {
     private firestore: AngularFirestore,
     private toastr:ToastrService) { }
 
-  ngOnInit() {
-    this.service.getTeams().subscribe(actionArray => {
-      this.list = actionArray.map(item => {
-        return {
-          id: item.payload.doc.id,
-          ...item.payload.doc.data()
-        } as Team;
-      })
-    });
+  async ngOnInit() {
+    this.service.getTeams().subscribe(res => this.list = res);
   }
 
   // onEdit(emp: Employee) {

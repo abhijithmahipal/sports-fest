@@ -13,6 +13,7 @@ import { AddTeamComponent } from './teams/addTeam/addTeam.component';
 import { TeamListComponent } from './teams/teamList/teamList.component';
 import { TeamService } from './services/team.service';
 import { AddPlayerComponent } from './teams/add-player/add-player.component';
+import { SquadComponent } from './teams/squad/squad.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AddPlayerComponent } from './teams/add-player/add-player.component';
     AddTeamComponent,
     TeamListComponent,
     HomeComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
+    SquadComponent
   ],
   imports: [
     BrowserModule,
