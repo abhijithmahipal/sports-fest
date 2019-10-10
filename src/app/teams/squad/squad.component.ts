@@ -21,14 +21,9 @@ export class SquadComponent implements OnInit {
   }
 
 
-  public getSquad(){
-    this.service.getTeamSquad(this.selectedTeam.id).then(
-      (snapsot)=> this.squad = snapsot.docs.map(item => {
-        return {
-          id: item.id,
-          ... item.data()
-        } as Player
-      }));
+  public async getSquad(){
+    this.service.getTeamSquad(this.selectedTeam.id).subscribe(res => this.squad = res);
+    console.log(this.squad);
   }
 
   setTeam(team: Team){

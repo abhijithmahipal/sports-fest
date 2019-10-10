@@ -9,6 +9,6 @@ export class Player {
     matchesPlayer: number;
     redCards: number;
     shortName: string;
-    teamName: DocumentReference;
+    teamName: string;
     yellowCards: number;
 }

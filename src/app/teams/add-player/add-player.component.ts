@@ -26,7 +26,7 @@ export class AddPlayerComponent implements OnInit {
   
   setTeam(team: Team){
     this.selectedTeam = team;
-    this.playerData.teamName = firebase.firestore().doc('teams/' + team.id)
+    this.playerData.teamName = 'teams/' + team.id;
   }
 
   resetForm(form?: NgForm) {
@@ -40,7 +40,7 @@ export class AddPlayerComponent implements OnInit {
     this.playerData.matchesPlayer = 0;
     this.playerData.jerseyNumber = null;
     this.playerData.teamName = null;
-    this.selectedTeam = {id:'-1',name:'Assign Team',manager1:null,manager2:null,captain:null};
+    this.selectedTeam = {id: '-1', name: 'Assign Team', manager1: null, manager2: null, captain: null};
   }
 
   addPlayer() {
