@@ -22,36 +22,24 @@ export class TeamService {
           id: action.payload.doc.id,
           ...action.payload.doc.data()
         } as Team;
-      })
-    }))
+      });
+    }));
   }
 
 
 
   addTeam(teamData: Team) {
-    let data = Object.assign({}, teamData);
+    const data = Object.assign({}, teamData);
     this.db.collection('teams').add(data);
-    //this.firestore.doc('teams/' + form.value.id).update(data); //to update row.
+    // this.firestore.doc('teams/' + form.value.id).update(data); //to update row.
   }
 
   addPlayer(playerData: Player) {
-    let data = Object.assign({}, playerData);
+    const data = Object.assign({}, playerData);
     this.db.collection('players').add(data);
   }
 
-  getTeamSquad(id: string) :Observable<Player[]>{
-    let data;
-    this.db.firestore.collection('players').where('teamName', '==', 'teams/'+id)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            data = doc.data();
-        });
-    })
-    .catch(function(error) {
-        console.log('Error getting documents: ', error);
-    });
-    return data;
+  getTeamSquad(id: string) {
+    return this.db.firestore.collection('players').where('teamName', '==', 'teams/' + id);
   }
 }

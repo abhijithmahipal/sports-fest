@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { Team } from 'src/app/models/team';
 import * as _ from 'lodash';
-import { Player } from 'src/app/models/player';
+import { DocumentData } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-squad',
@@ -12,21 +12,26 @@ import { Player } from 'src/app/models/player';
 export class SquadComponent implements OnInit {
   teamList: Team[];
   selectedTeam: Team;
-  squad: Player[];
+  squad: DocumentData = [];
   constructor(private service: TeamService) { }
 
   async ngOnInit() {
     this.service.getTeams().subscribe(res => this.teamList = res);
-    this.selectedTeam = {id:'-1', name:'choose team', manager1:null,manager2:null,captain:null }
+    this.selectedTeam = {id: '-1', name: 'choose team', manager1: null, manager2: null, captain: null };
   }
 
 
-  public async getSquad(){
-    this.service.getTeamSquad(this.selectedTeam.id).subscribe(res => this.squad = res);
-    console.log(this.squad);
+  public getSquad(){
+    this.service.getTeamSquad(this.selectedTeam.id).get()
+    .then(snapshot => {
+      snapshot.forEach(doc => {
+         this.squad.push(doc.data());
+      });
+    });
   }
 
   setTeam(team: Team){
+    this.squad = [];
     this.selectedTeam = team;
     this.getSquad();
   }
