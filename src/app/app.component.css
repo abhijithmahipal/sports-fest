@@ -1,0 +1,10 @@
+article {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+main {
+  background-color: gray; 
+  flex: 1;
+  padding: 0px 5vw;
+}

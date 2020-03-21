@@ -5,34 +5,34 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
+import { AppRoutingModule } from './app-routing.module';
 
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './teams/home';
-import { AddTeamComponent } from './teams/addTeam/addTeam.component';
-import { TeamListComponent } from './teams/teamList/teamList.component';
 import { TeamService } from './services/team.service';
-import { AddPlayerComponent } from './teams/add-player/add-player.component';
-import { SquadComponent } from './teams/squad/squad.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AddTeamComponent,
-    TeamListComponent,
-    HomeComponent,
-    AddPlayerComponent,
-    SquadComponent
-  ],
-  imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot()
-  ],
-  providers: [TeamService],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      HeaderComponent,
+      FooterComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      AngularFireModule.initializeApp(environment.firebaseConfig),
+      AngularFirestoreModule,
+      FormsModule,
+      BrowserAnimationsModule,
+      ToastrModule.forRoot()
+   ],
+   providers: [
+      TeamService
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
