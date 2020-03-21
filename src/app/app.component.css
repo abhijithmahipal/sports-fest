@@ -4,7 +4,7 @@ article {
   height: 100vh;
 }
 main {
-  background-color: gray; 
+  background-color: whitesmoke; 
   flex: 1;
   padding: 0px 5vw;
 }
