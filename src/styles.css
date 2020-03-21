@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Roboto';font-size: 16px;
+}
 
 input.ng-touched.ng-invalid{
     border-color: #dc3545;
