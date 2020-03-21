@@ -1,0 +1,29 @@
+<h1>Leaderboard</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Teams</th>
+      <th scope="col">Played</th>
+      <th scope="col">Wins</th>
+      <th scope="col">Draws</th>
+      <th scope="col">Loses</th>
+      <th scope="col">Points</th>
+      <th scope="col">Goals Forwaded</th>
+      <th scope="col">Goals Conceded</th>
+      <th scope="col">Goal Difference</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of standings">
+      <th scope="row">{{item.Teams}}</th>
+      <td>{{item.P}}</td>
+      <td>{{item.W}}</td>
+      <td>{{item.D}}</td>
+      <td>{{item.L}}</td>
+      <td>{{item.Pts}}</td>
+      <td>{{item.GF}}</td>
+      <td>{{item.GA}}</td>
+      <td>{{item.GD}}</td>
+    </tr>
+  </tbody>
+</table>

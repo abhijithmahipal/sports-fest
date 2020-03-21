@@ -1,8 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Team } from '../models/team';
 import { Player } from '../models/player';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { firestore, database } from 'firebase';
 import { isNgTemplate } from '@angular/compiler';
@@ -13,20 +14,22 @@ import { isNgTemplate } from '@angular/compiler';
 export class TeamService {
   formData: Team;
 
-  constructor(private db: AngularFirestore) { }
+  constructor(private db: AngularFirestore, private http: HttpClient) { }
 
-  getTeams() {
-    return this.db.collection('teams').snapshotChanges().pipe(map(changes => {
-      return changes.map(action => {
-        return {
-          id: action.payload.doc.id,
-          ...action.payload.doc.data()
-        } as Team;
-      });
-    }));
+  // getTeams() {
+  //   return this.db.collection('teams').snapshotChanges().pipe(map(changes => {
+  //     return changes.map(action => {
+  //       return {
+  //         id: action.payload.doc.id,
+  //         //...action.payload.doc.data()
+  //       } as Team;
+  //     });
+  //   }));
+  // }
+
+  async getTeamStandings() {
+    return this.http.get<Team[]>('../assets/standings.json').toPromise();
   }
-
-
 
   addTeam(teamData: Team) {
     const data = Object.assign({}, teamData);
