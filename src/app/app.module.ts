@@ -14,11 +14,8 @@ import { TeamService } from './services/team.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-<<<<<<< HEAD
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-=======
 import { AboutusComponent } from './aboutus/aboutus.component';
->>>>>>> af6635f2b6f5d4f35e2645c3be5f5b2b236a0ff0
 
 @NgModule({
    declarations: [
