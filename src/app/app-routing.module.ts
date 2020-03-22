@@ -1,3 +1,4 @@
+import { FixturesComponent } from './fixtures/fixtures.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'leaderboard', component: LeaderboardComponent},
   { path: 'aboutus', component: AboutusComponent},
+  { path:'fixtures', component: FixturesComponent}
 ];
 
 @NgModule({
