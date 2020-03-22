@@ -1,0 +1,15 @@
+h1 {
+    padding: 1em 0;
+}
+
+table tbody tr:nth-child(-n + 2) {
+    background-color: green;
+}
+
+table tbody tr:nth-last-child(-n + 2) {
+    background-color: red;
+}
+
+.standings-table {
+    overflow-x: auto;
+}

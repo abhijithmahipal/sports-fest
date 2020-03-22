@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
@@ -13,6 +14,7 @@ import { TeamService } from './services/team.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 
 @NgModule({
@@ -21,11 +23,13 @@ import { AboutusComponent } from './aboutus/aboutus.component';
       HeaderComponent,
       FooterComponent,
       HomeComponent,
+      LeaderboardComponent,
       AboutusComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
+      HttpClientModule,
       AngularFireModule.initializeApp(environment.firebaseConfig),
       AngularFirestoreModule,
       FormsModule,

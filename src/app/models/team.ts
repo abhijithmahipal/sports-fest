@@ -1,7 +1,10 @@
-export class Team {
-    id: string;
-    name: string;
-    manager1: string;
-    manager2: string;
-    captain: string;
+export class Team { 
+    Teams: string;
+    P: number;
+    D: number;
+    L: number;
+    Pts: number;
+    GF: number;
+    GA: number;
+    GD: number;
 }
