@@ -16,7 +16,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of standings">
-        <th scope="row">{{item.Teams}}</th>
+        <th scope="row">
+          <div class="profile-pic">
+            <img src="{{getImageUrl(item.Teams)}}" alt="{{item.Teams}}">
+          </div> {{item.Teams}}
+        </th>
         <td>{{item.P}}</td>
         <td>{{item.W}}</td>
         <td>{{item.D}}</td>

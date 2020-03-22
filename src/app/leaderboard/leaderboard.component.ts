@@ -12,6 +12,10 @@ export class LeaderboardComponent implements OnInit {
 
   standings: Team[];
 
+  getImageUrl(name) {
+    return "../assets/profilePics/" + name + ".jpg";
+  }
+
   constructor(private teamService: TeamService) {
         
   }

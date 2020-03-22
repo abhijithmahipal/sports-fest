@@ -3,13 +3,24 @@ h1 {
 }
 
 table tbody tr:nth-child(-n + 2) {
-    background-color: green;
+    background-color: lightgreen;
 }
 
 table tbody tr:nth-last-child(-n + 2) {
-    background-color: red;
+    background-color: lightsalmon;
 }
 
 .standings-table {
     overflow-x: auto;
+}
+
+.profile-pic {
+    display: inline-block;
+    margin-right: 0.25em;
+}
+
+.profile-pic img {
+    max-width: 2em;
+    max-height: 2em;
+    border-radius: 50%;
 }
