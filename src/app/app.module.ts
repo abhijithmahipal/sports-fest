@@ -16,6 +16,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { FixturesComponent } from './fixtures/fixtures.component';
 
 @NgModule({
    declarations: [
@@ -24,7 +25,8 @@ import { AboutusComponent } from './aboutus/aboutus.component';
       FooterComponent,
       HomeComponent,
       LeaderboardComponent,
-      AboutusComponent
+      AboutusComponent,
+      FixturesComponent
    ],
    imports: [
       BrowserModule,
