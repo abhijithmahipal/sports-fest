@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { FixturesComponent } from './fixtures/fixtures.component';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
    declarations: [
@@ -36,7 +37,8 @@ import { FixturesComponent } from './fixtures/fixtures.component';
       AngularFirestoreModule,
       FormsModule,
       BrowserAnimationsModule,
-      ToastrModule.forRoot()
+      ToastrModule.forRoot(),
+      CarouselModule
    ],
    providers: [
       TeamService
