@@ -1,3 +1,4 @@
+import { Fixture } from './../models/fixture';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
@@ -27,8 +28,12 @@ export class TeamService {
   //   }));
   // }
 
-  async getTeamStandings() {
+  getTeamStandings() {
     return this.http.get<Team[]>('../assets/standings.json').toPromise();
+  }
+
+  getFixtures() {
+    return this.http.get<Fixture[]>('../assets/fixture.json').toPromise();
   }
 
   addTeam(teamData: Team) {
