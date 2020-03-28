@@ -18,6 +18,7 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { FixturesComponent } from './fixtures/fixtures.component';
 import {CarouselModule} from 'primeng/carousel';
+import { UpdatescoreComponent } from './updatescore/updatescore.component';
 
 @NgModule({
    declarations: [
@@ -27,7 +28,8 @@ import {CarouselModule} from 'primeng/carousel';
       HomeComponent,
       LeaderboardComponent,
       AboutusComponent,
-      FixturesComponent
+      FixturesComponent,
+      UpdatescoreComponent
    ],
    imports: [
       BrowserModule,

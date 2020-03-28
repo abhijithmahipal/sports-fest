@@ -1,3 +1,4 @@
+import { UpdatescoreComponent } from './updatescore/updatescore.component';
 import { FixturesComponent } from './fixtures/fixtures.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NgModule } from '@angular/core';
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'leaderboard', component: LeaderboardComponent},
   { path: 'aboutus', component: AboutusComponent},
-  { path:'fixtures', component: FixturesComponent}
+  { path:'fixtures', component: FixturesComponent},
+  { path:'updatescore', component: UpdatescoreComponent}
 ];
 
 @NgModule({

@@ -1,0 +1,34 @@
+<div class="update-score">
+  <h1>Update Score</h1>
+  <div class="matchday">
+    <h2>Select matchday</h2>
+    <select id="matchday" [(ngModel)]="selectedMatchDay" (ngModelChange)="onMatchDaySelected()">>
+      <option *ngFor="let matchday of matchDays" [ngValue]="matchday">{{matchday}}</option>
+    </select>
+  </div>
+  <div *ngIf="showMatchSelector">
+    <h3>Select Home and away teams:</h3>
+    <div class="score-card">
+      <div class="home">
+        <label for="home">Home</label>
+        <select id="home" [(ngModel)]="selectedHomeTeam" (ngModelChange)="onHomeTeamChange()">
+          <option *ngFor="let team of homeTeams" [ngValue]="team">{{team.Teams}}</option>
+        </select>
+        <div>
+          <input id="homeGoals" type="number" [(ngModel)]="homeGoals" />
+        </div>
+      </div>
+      <div class="away">
+        <label for="away">Away</label>
+        <select id="away" [(ngModel)]="selectedAwayTeam" (ngModelChange)="onAwayTeamChange()">
+          <option *ngFor="let team of awayTeams" [ngValue]="team">{{team.Teams}}</option>
+        </select>
+        <div>
+          <input id="awayGoals" type="number" [(ngModel)]="awayGoals" />
+        </div>
+      </div>
+    </div>
+    <p class="alert alert-danger" *ngIf="showErrorMsg">Please select teams and enter goals</p>
+    <button class="btn btn-primary"(click)="updateScore()">Update Score</button>
+  </div>
+</div>

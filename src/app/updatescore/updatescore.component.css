@@ -1,0 +1,41 @@
+.update-score {
+    align-items: center;
+}
+
+h1 {
+    padding: 0.5em 0;
+}
+
+label {
+    padding-right: 0.25em;
+    font-weight: 400;
+}
+
+select, input {
+    min-width: 6em;
+    text-align: center;
+}
+
+.matchday {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5em 0;
+}
+
+.matchday h2 {
+    padding-right: 0.25em;
+}
+
+.score-card {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5em 0;
+}
+
+.score-card .home {
+    padding: 0.25em 0.5em;
+}
+
+.score-card .away {
+    padding: 0.25em 0.5em;
+}

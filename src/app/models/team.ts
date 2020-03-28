@@ -7,4 +7,5 @@ export class Team {
     GF: number;
     GA: number;
     GD: number;
+    W: number;
 }
