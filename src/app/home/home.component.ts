@@ -24,7 +24,15 @@ export class HomeComponent implements OnInit {
     });
     this.carousalData.push({
       isVideo: false,
-      source: "../../assets/md8.jpg"
+      source: "../../assets/md10.jpg"
+    });
+    this.carousalData.push({
+      isVideo: false,
+      source: "../../assets/md11.jpg"
+    });
+    this.carousalData.push({
+      isVideo: false,
+      source: "../../assets/md12.jpg"
     });
 
     this.responsiveOptions = [
