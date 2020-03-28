@@ -114,7 +114,7 @@ export class UpdatescoreComponent implements OnInit {
     var awayTeamUpdateIndex = this.teamsData.findIndex(x => x.data.Teams === this.selectedAwayTeam.Teams);
     var awayTeamUpdate = this.teamsData[awayTeamUpdateIndex];    
 
-    if(this.password === "akilser123") {
+    if(this.password === "halamadrid") {
       if(this.homeGoals !== undefined && this.awayGoals !== undefined && this.selectedHomeTeam && this.selectedAwayTeam) {
         this.teamService.updateScore(homeTeamUpdate, awayTeamUpdate, this.homeGoals, this.awayGoals)
           .finally(() => {
