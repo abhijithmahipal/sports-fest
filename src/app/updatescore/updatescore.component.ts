@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { StandingsOutput } from './../models/standingsOutput';
 import { map } from 'rxjs/operators';
@@ -29,8 +30,9 @@ export class UpdatescoreComponent implements OnInit {
   showMatchSelector: boolean = false;
   showErrorMsg: boolean = false;
   isIncorrectPassword: boolean = false;
+  isButtonDisabled: boolean = false;
 
-  constructor(private teamService: TeamService, private spinner: NgxSpinnerService) { }
+  constructor(private teamService: TeamService, private spinner: NgxSpinnerService, private router: Router) { }
 
   ngOnInit() {
     this.spinner.show();
@@ -104,6 +106,8 @@ export class UpdatescoreComponent implements OnInit {
   }
 
   updateScore() {
+    this.isButtonDisabled = true;
+    this.spinner.show();
     var homeTeamUpdateIndex = this.teamsData.findIndex(x => x.data.Teams === this.selectedHomeTeam.Teams);
     var homeTeamUpdate = this.teamsData[homeTeamUpdateIndex];
 
@@ -111,12 +115,23 @@ export class UpdatescoreComponent implements OnInit {
     var awayTeamUpdate = this.teamsData[awayTeamUpdateIndex];    
 
     if(this.password === "akilser123") {
-      if(this.homeGoals && this.awayGoals && this.selectedHomeTeam && this.selectedAwayTeam)     
-        this.teamService.updateScore(homeTeamUpdate, awayTeamUpdate, this.homeGoals, this.awayGoals);   
-      else
-        this.showErrorMsg = true;   
+      if(this.homeGoals !== undefined && this.awayGoals !== undefined && this.selectedHomeTeam && this.selectedAwayTeam) {
+        this.teamService.updateScore(homeTeamUpdate, awayTeamUpdate, this.homeGoals, this.awayGoals)
+          .finally(() => {
+            this.isButtonDisabled = false;
+            this.spinner.hide();
+            this.router.navigate(['/leaderboard'])
+          });   
+      }           
+      else {
+        this.isButtonDisabled = false;
+        this.spinner.hide();
+        this.showErrorMsg = true; 
+      }        
     }
     else {
+      this.isButtonDisabled = false;
+      this.spinner.hide();
       this.isIncorrectPassword = true;
     }
          

@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { StandingsOutput } from './../models/standingsOutput';
 import { Fixture } from './../models/fixture';
 import { HttpClient } from '@angular/common/http';
@@ -20,7 +19,7 @@ export class TeamService {
   formData: Team;
   standingsRef: AngularFirestoreCollection<Team> = null;
 
-  constructor(private db: AngularFirestore, private http: HttpClient, private router:Router, private spinner: NgxSpinnerService) { 
+  constructor(private db: AngularFirestore, private http: HttpClient, private spinner: NgxSpinnerService) { 
     this.standingsRef = this.db.collection<Team>('standings')
   }
 
@@ -39,8 +38,6 @@ export class TeamService {
   }
 
   updateScore(homeTeam: StandingsOutput, awayTeam: StandingsOutput, homeGoals:number, awayGoals:number) {
-    this.spinner.show();
-
     var homeTeamUpdate = Object.assign({}, homeTeam.data);
     var awayTeamUpdate = Object.assign({}, awayTeam.data);
 
@@ -70,18 +67,11 @@ export class TeamService {
       homeTeamUpdate.Pts++;
       homeTeamUpdate.D++;
     }
-
-    this.standingsRef.doc(homeTeam.id).update(homeTeamUpdate)
-      .then(() => {
-        return this.standingsRef.doc(awayTeam.id).update(awayTeamUpdate);    
-      })
-      .then (() => {
-        this.router.navigate(['/leaderboard']);
-      })
-      .finally(() => {
-        this.spinner.hide();
-      });
     
+    var homeTeamPromise = this.standingsRef.doc(homeTeam.id).update(homeTeamUpdate);
+    var awayTeamPromise = this.standingsRef.doc(awayTeam.id).update(awayTeamUpdate);  
+    
+    return Promise.all([homeTeamPromise, awayTeamPromise]);    
   }
 
   addPlayer(playerData: Player) {
