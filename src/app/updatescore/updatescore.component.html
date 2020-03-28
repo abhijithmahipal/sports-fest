@@ -28,7 +28,12 @@
         </div>
       </div>
     </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="text" [(ngModel)]="password" id="password"/>
+    </div>
     <p class="alert alert-danger" *ngIf="showErrorMsg">Please select teams and enter goals</p>
+    <p class="alert alert-danger" *ngIf="isIncorrectPassword">Password missmatch</p>
     <button class="btn btn-primary"(click)="updateScore()">Update Score</button>
   </div>
 </div>

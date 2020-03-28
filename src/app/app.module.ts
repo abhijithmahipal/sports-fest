@@ -19,6 +19,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 import { FixturesComponent } from './fixtures/fixtures.component';
 import {CarouselModule} from 'primeng/carousel';
 import { UpdatescoreComponent } from './updatescore/updatescore.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
    declarations: [
@@ -40,7 +41,8 @@ import { UpdatescoreComponent } from './updatescore/updatescore.component';
       FormsModule,
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
-      CarouselModule
+      CarouselModule,
+      NgxSpinnerModule
    ],
    providers: [
       TeamService

@@ -22,10 +22,12 @@ export class UpdatescoreComponent implements OnInit {
   selectedHomeTeam: Team = new Team();
   selectedAwayTeam: Team = new Team();
   homeGoals: number;
-  awayGoals: number;  
+  awayGoals: number;
+  password: string;  
 
   showMatchSelector: boolean = false;
   showErrorMsg: boolean = false;
+  isIncorrectPassword: boolean = false;
 
   constructor(private teamService: TeamService) { }
 
@@ -104,10 +106,16 @@ export class UpdatescoreComponent implements OnInit {
     var awayTeamUpdateIndex = this.teamsData.findIndex(x => x.data.Teams === this.selectedAwayTeam.Teams);
     var awayTeamUpdate = this.teamsData[awayTeamUpdateIndex];    
 
-    if(this.homeGoals && this.awayGoals && this.selectedHomeTeam && this.selectedAwayTeam)     
-      this.teamService.updateScore(homeTeamUpdate, awayTeamUpdate, this.homeGoals, this.awayGoals);   
-    else
-      this.showErrorMsg = true;        
+    if(this.password === "akilser123") {
+      if(this.homeGoals && this.awayGoals && this.selectedHomeTeam && this.selectedAwayTeam)     
+        this.teamService.updateScore(homeTeamUpdate, awayTeamUpdate, this.homeGoals, this.awayGoals);   
+      else
+        this.showErrorMsg = true;   
+    }
+    else {
+      this.isIncorrectPassword = true;
+    }
+         
   }
 
 }

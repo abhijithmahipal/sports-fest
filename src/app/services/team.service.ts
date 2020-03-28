@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 import { firestore, database } from 'firebase';
 import { isNgTemplate } from '@angular/compiler';
 import { promise } from 'protractor';
+import {NgxSpinnerService} from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class TeamService {
   formData: Team;
   standingsRef: AngularFirestoreCollection<Team> = null;
 
-  constructor(private db: AngularFirestore, private http: HttpClient, private router:Router) { 
+  constructor(private db: AngularFirestore, private http: HttpClient, private router:Router, private spinner: NgxSpinnerService) { 
     this.standingsRef = this.db.collection<Team>('standings')
   }
 
@@ -38,6 +39,8 @@ export class TeamService {
   }
 
   updateScore(homeTeam: StandingsOutput, awayTeam: StandingsOutput, homeGoals:number, awayGoals:number) {
+    this.spinner.show();
+
     var homeTeamUpdate = Object.assign({}, homeTeam.data);
     var awayTeamUpdate = Object.assign({}, awayTeam.data);
 
@@ -63,17 +66,20 @@ export class TeamService {
     }
     else {
       awayTeamUpdate.Pts++;
-      awayTeamUpdate.D = awayTeamUpdate.D++;
+      awayTeamUpdate.D++;
       homeTeamUpdate.Pts++;
       homeTeamUpdate.D++;
     }
 
     this.standingsRef.doc(homeTeam.id).update(homeTeamUpdate)
-      .then(x => {
+      .then(() => {
         return this.standingsRef.doc(awayTeam.id).update(awayTeamUpdate);    
       })
-      .then (x => {
+      .then (() => {
         this.router.navigate(['/leaderboard']);
+      })
+      .finally(() => {
+        this.spinner.hide();
       });
     
   }
