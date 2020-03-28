@@ -47,7 +47,7 @@ export class TeamService {
     homeTeamUpdate.GD = homeTeamUpdate.GF - homeTeamUpdate.GA;
 
     awayTeamUpdate.P++;
-    awayTeamUpdate.GF = homeTeamUpdate.GF + awayGoals;
+    awayTeamUpdate.GF = awayTeamUpdate.GF + awayGoals;
     awayTeamUpdate.GA = awayTeamUpdate.GA + homeGoals;
     awayTeamUpdate.GD = awayTeamUpdate.GF - awayTeamUpdate.GA; 
     
@@ -65,7 +65,7 @@ export class TeamService {
       awayTeamUpdate.Pts++;
       awayTeamUpdate.D = awayTeamUpdate.D++;
       homeTeamUpdate.Pts++;
-      awayTeamUpdate.D++;
+      homeTeamUpdate.D++;
     }
 
     this.standingsRef.doc(homeTeam.id).update(homeTeamUpdate)
