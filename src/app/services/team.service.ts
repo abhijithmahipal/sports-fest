@@ -1,7 +1,7 @@
 import { Fixture } from './../models/fixture';
 import { HttpClient } from '@angular/common/http';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Team } from '../models/team';
 import { Player } from '../models/player';
 import { Observable, from } from 'rxjs';
@@ -14,8 +14,11 @@ import { isNgTemplate } from '@angular/compiler';
 })
 export class TeamService {
   formData: Team;
+  standingsRef: AngularFirestoreCollection<Team> = null;
 
-  constructor(private db: AngularFirestore, private http: HttpClient) { }
+  constructor(private db: AngularFirestore, private http: HttpClient) { 
+    this.standingsRef = this.db.collection<Team>('standings')
+  }
 
   // getTeams() {
   //   return this.db.collection('teams').snapshotChanges().pipe(map(changes => {
@@ -28,8 +31,8 @@ export class TeamService {
   //   }));
   // }
 
-  getTeamStandings() {
-    return this.http.get<Team[]>('../assets/standings.json').toPromise();
+  getTeamStandings() {    
+    return this.standingsRef;
   }
 
   getFixtures() {
