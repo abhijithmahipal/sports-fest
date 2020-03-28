@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { StandingsOutput } from './../models/standingsOutput';
 import { map } from 'rxjs/operators';
 import { Team } from './../models/team';
@@ -29,9 +30,10 @@ export class UpdatescoreComponent implements OnInit {
   showErrorMsg: boolean = false;
   isIncorrectPassword: boolean = false;
 
-  constructor(private teamService: TeamService) { }
+  constructor(private teamService: TeamService, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show();
     this.teamService.getTeamStandings().snapshotChanges()
       .pipe(map(cahnges =>
         cahnges.map(c => {
@@ -56,6 +58,8 @@ export class UpdatescoreComponent implements OnInit {
 
         this.initAwayTeam();
         this.initHomeTeam();
+
+        this.spinner.hide();
       });
   }
 
