@@ -1,3 +1,4 @@
+import { NgxSpinnerService } from 'ngx-spinner';
 import { map } from 'rxjs/operators';
 import { TeamService } from 'src/app/services/team.service';
 import { Component, OnInit } from '@angular/core';
@@ -17,11 +18,12 @@ export class LeaderboardComponent implements OnInit {
     return "../assets/profilePics/" + name + ".jpg";
   }
 
-  constructor(private teamService: TeamService) {
+  constructor(private teamService: TeamService, private spinner: NgxSpinnerService) {
         
   }
 
   ngOnInit() {   
+    this.spinner.show();
     this.teamService.getTeamStandings().snapshotChanges()
       .pipe(map(cahnges => 
         cahnges.map(c => {return c.payload.doc.data()}))
@@ -44,6 +46,8 @@ export class LeaderboardComponent implements OnInit {
             
             }
           }
+          
+          this.spinner.hide();
         });      
 
     
