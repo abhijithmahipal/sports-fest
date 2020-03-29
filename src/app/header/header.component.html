@@ -6,19 +6,19 @@
     <a class="navbar-brand" href="#">PES 2020</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/home']" toggle routerLinkActive="router-link-active" >Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/leaderboard']">Leaderboard</a>
+        <a class="nav-link" [routerLink]="['/leaderboard']" routerLinkActive="router-link-active" toggle>Leaderboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/fixtures']">Fixtures</a>
+        <a class="nav-link" [routerLink]="['/fixtures']" routerLinkActive="router-link-active" toggle>Fixtures</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/updatescore']" routerLinkActive="router-link-active" >Update Score</a>
+        <a class="nav-link" [routerLink]="['/updatescore']" toggle routerLinkActive="router-link-active" >Update Score</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/aboutus']" routerLinkActive="router-link-active" >About Us</a>
+        <a class="nav-link" [routerLink]="['/aboutus']" toggle routerLinkActive="router-link-active" >About Us</a>
       </li>
     </ul>
     <!-- <form class="form-inline my-2 my-lg-0">
