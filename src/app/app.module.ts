@@ -20,6 +20,7 @@ import { FixturesComponent } from './fixtures/fixtures.component';
 import {CarouselModule} from 'primeng/carousel';
 import { UpdatescoreComponent } from './updatescore/updatescore.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ToggleDirective } from './toggle.directive';
 
 @NgModule({
    declarations: [
@@ -30,7 +31,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
       LeaderboardComponent,
       AboutusComponent,
       FixturesComponent,
-      UpdatescoreComponent
+      UpdatescoreComponent,
+      ToggleDirective
    ],
    imports: [
       BrowserModule,
