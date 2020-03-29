@@ -17,7 +17,6 @@ export class UpdatescoreComponent implements OnInit {
 
   leastMatchDay: number = 18;
   teamsData: StandingsOutput[];
-  matchDays: number[] = new Array<number>();
   selectedMatchDay: number;
   homeTeams: Team[] = new Array<Team>();
   awayTeams: Team[] = new Array<Team>();
@@ -52,11 +51,8 @@ export class UpdatescoreComponent implements OnInit {
             this.leastMatchDay = element.data.P;
           }
         });
-        this.leastMatchDay++;
-
-        for (let i = this.leastMatchDay; i < 19; i++) {
-          this.matchDays.push(i);
-        }
+        
+        this.selectedMatchDay = this.leastMatchDay + 1;
 
         this.initAwayTeam();
         this.initHomeTeam();

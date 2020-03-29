@@ -9,11 +9,18 @@ h1 {
 label {
     padding-right: 0.25em;
     font-weight: 400;
+    min-width: 6em;
 }
 
-select, input {
+select {
     min-width: 6em;
     text-align: center;
+}
+
+input[type='number'] {
+    max-width: 3em;
+    margin: 0 0.25em;
+    max-height: 1.5em;
 }
 
 .matchday {
@@ -32,10 +39,10 @@ select, input {
     padding: 0.5em 0;
 }
 
-.score-card .home {
-    padding: 0.25em 0.5em;
+.home {
+    padding-right: 1em;
 }
 
-.score-card .away {
-    padding: 0.25em 0.5em;
+.actions {
+    padding: 2em 0;
 }
