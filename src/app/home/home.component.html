@@ -5,16 +5,18 @@
   <div class="data">
     <p-carousel [value]="carousalData" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
       <ng-template let-cdata pTemplate="item">
-          <div class="carousal-container" *ngIf="cdata.isVideo">
+        <div [ngSwitch]="cdata.carousalType">
+          <div class="carousal-container" *ngSwitchCase="'video'">
             <video class="carousal-video" autoplay playsinline muted loop poster="{{cdata.poster}}">
               <source
                 src="{{cdata.source}}"
                 type="{{cdata.type}}">
             </video>
           </div>
-          <div class="carousal-container" *ngIf="!cdata.isVideo">
+          <div class="carousal-container" *ngSwitchCase="'image'">
             <img class="carousal-image" [src]="cdata.source" alt="item description">
           </div>
+        </div>
       </ng-template>
     </p-carousel>
   </div>  
