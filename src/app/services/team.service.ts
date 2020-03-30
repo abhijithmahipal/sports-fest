@@ -1,9 +1,9 @@
+import { Team } from './../models/team';
 import { StandingsOutput } from './../models/standingsOutput';
 import { Fixture } from './../models/fixture';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Team } from '../models/team';
 import { Player } from '../models/player';
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -25,6 +25,18 @@ export class TeamService {
 
   getTeamStandings() {    
     return this.standingsRef;
+  }
+
+  getMatchDay() {
+    return this.db.collection<Team>('standings', ref => ref.orderBy('P', 'asc').limit(1)).valueChanges();    
+  }
+
+  getTopScorers() {
+    return this.db.collection<Team>('standings', ref => ref.orderBy('GF', 'desc').limit(5)).valueChanges();
+  }
+
+  getBestDefences() {
+    return this.db.collection<Team>('standings', ref => ref.orderBy('GA', 'asc').limit(5)).valueChanges();
   }
 
   getFixtures() {

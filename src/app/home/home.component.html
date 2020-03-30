@@ -16,6 +16,10 @@
           <div class="carousal-container" *ngSwitchCase="'image'">
             <img class="carousal-image" [src]="cdata.source" alt="item description">
           </div>
+          <div class="carousal-container" *ngSwitchCase="'topscorers'">
+              <h3>Top Scorers</h3>
+              <p *ngFor="let item of cdata.data">{{item.Teams}}</p>
+          </div>
         </div>
       </ng-template>
     </p-carousel>

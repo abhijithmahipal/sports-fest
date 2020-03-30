@@ -12,21 +12,16 @@ import { Team } from '../models/team';
 })
 export class LeaderboardComponent implements OnInit {
 
-  standings: Team[];
+  standings: Team[];  
 
-  getImageUrl(name) {
-    return "../assets/profilePics/" + name + ".jpg";
-  }
-
-  constructor(private teamService: TeamService, private spinner: NgxSpinnerService) {
-        
+  constructor(private teamService: TeamService, private spinner: NgxSpinnerService) {        
   }
 
   ngOnInit() {   
     this.spinner.show();
     this.teamService.getTeamStandings().snapshotChanges()
-      .pipe(map(cahnges => 
-        cahnges.map(c => {return c.payload.doc.data()}))
+      .pipe(map(changes => 
+        changes.map(c => {return c.payload.doc.data()}))
         ).subscribe(standings => { 
           this.standings = standings;
           for(let i = 0; i < this.standings.length; i++) {
@@ -51,6 +46,10 @@ export class LeaderboardComponent implements OnInit {
         });      
 
     
+  }
+
+  getImageUrl(name) {
+    return "../assets/profilePics/" + name + ".jpg";
   }
 
 }
