@@ -20,11 +20,11 @@ export class HomeComponent implements OnInit {
     });
     this.carousalData.push({
       isVideo: false,
-      source: '../../assets/md11.jpg'
+      source: '../../assets/em11.jpg'
     });
     this.carousalData.push({
       isVideo: false,
-      source: '../../assets/hiring.jpg'
+      source: '../../assets/ehiring.jpg'
     });
     this.carousalData.push({
       isVideo: false,
