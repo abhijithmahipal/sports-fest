@@ -24,6 +24,10 @@ export class HomeComponent implements OnInit {
     });
     this.carousalData.push({
       isVideo: false,
+      source: '../../assets/hiring.jpg'
+    });
+    this.carousalData.push({
+      isVideo: false,
       source: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/26363223d4dc8f5ce673428802ea988a_screen.jpg?ts=1583388529'
     });
     this.carousalData.push({
