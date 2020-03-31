@@ -32,11 +32,11 @@ export class TeamService {
   }
 
   getTopScorers() {
-    return this.db.collection<Team>('standings', ref => ref.orderBy('GF', 'desc').limit(5)).valueChanges();
+    return this.db.collection<Team>('standings', ref => ref.orderBy('GF', 'desc').limit(4)).valueChanges();
   }
 
   getBestDefences() {
-    return this.db.collection<Team>('standings', ref => ref.orderBy('GA', 'asc').limit(5)).valueChanges();
+    return this.db.collection<Team>('standings', ref => ref.orderBy('GA', 'asc').limit(4)).valueChanges();
   }
 
   getFixtures() {

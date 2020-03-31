@@ -26,6 +26,21 @@ export class HomeComponent implements OnInit {
     this.spinner.show();
     this.initCarousalData();
 
+    this.teamService.getMatchDay().subscribe((x) => {
+      this.matchDay = 'Match Day '+ (x[0].P + 1);
+      
+      this.teamService.getFixtures()
+        .then(x => {
+          this.presentFixture = x.find(m => m.MatchDay == this.matchDay.toString());
+          
+          this.carousalData.push({
+            carousalType: 'matchday',
+            data: this.presentFixture
+          });
+          
+        });    
+    });
+
     this.teamService.getTopScorers().subscribe(x => { 
       this.topScorers = x;
 
@@ -35,18 +50,14 @@ export class HomeComponent implements OnInit {
       });
     });    
 
-    this.teamService.getBestDefences().subscribe(x => {this.topDefences = x; console.log(x);});  
+    this.teamService.getBestDefences().subscribe(x => {
+      this.topDefences = x;
 
-    this.teamService.getMatchDay().subscribe((x) => {
-      this.matchDay = 'Match Day '+ (x[0].P + 1);
-      console.log(this.matchDay);
-      
-      this.teamService.getFixtures()
-        .then(x => {
-          this.presentFixture = x.find(m => m.MatchDay == this.matchDay.toString());
-          console.log(this.presentFixture);
-        });    
-    });
+      this.carousalData.push({
+        carousalType: 'topdefences',
+        data: this.topDefences
+      });
+    });  
 
     this.spinner.hide();         
   }
@@ -84,5 +95,9 @@ export class HomeComponent implements OnInit {
         numScroll: 1
       }
     ];
+  }
+
+  getImageUrl(name) {
+    return "../assets/profilePics/" + name + ".jpg";
   }
 }
