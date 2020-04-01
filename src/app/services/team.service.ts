@@ -50,22 +50,39 @@ export class TeamService {
     awayTeamUpdate.GF = awayTeamUpdate.GF + awayGoals;
     awayTeamUpdate.GA = awayTeamUpdate.GA + homeGoals;
     awayTeamUpdate.GD = awayTeamUpdate.GF - awayTeamUpdate.GA; 
+
+    if(homeTeamUpdate.Form.length >= 5) {
+      homeTeamUpdate.Form.pop();
+    }
+
+    if(awayTeamUpdate.Form.length >= 5) {
+      awayTeamUpdate.Form.pop();
+    }
     
     if(homeGoals > awayGoals) {
       homeTeamUpdate.Pts = homeTeamUpdate.Pts + 3;
       homeTeamUpdate.W++;
-      awayTeamUpdate.L++;
+      awayTeamUpdate.L++;      
+
+      homeTeamUpdate.Form.splice(0, 0, "W");      
+      awayTeamUpdate.Form.splice(0, 0, "L");
     }
     else if(awayGoals > homeGoals) {
       awayTeamUpdate.Pts = awayTeamUpdate.Pts + 3;
       awayTeamUpdate.W++;
       homeTeamUpdate.L++;
+
+      homeTeamUpdate.Form.splice(0, 0, "L");      
+      awayTeamUpdate.Form.splice(0, 0, "W");
     }
     else {
       awayTeamUpdate.Pts++;
       awayTeamUpdate.D++;
       homeTeamUpdate.Pts++;
       homeTeamUpdate.D++;
+
+      homeTeamUpdate.Form.splice(0, 0, "D");      
+      awayTeamUpdate.Form.splice(0, 0, "D");
     }
     
     var homeTeamPromise = this.standingsRef.doc(homeTeam.id).update(homeTeamUpdate);
