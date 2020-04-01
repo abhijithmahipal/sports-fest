@@ -16,6 +16,34 @@
           <div class="carousal-container" *ngSwitchCase="'image'">
             <img class="carousal-image" [src]="cdata.source" alt="item description">
           </div>
+          <div class="carousal-container playerstats" *ngSwitchCase="'topscorers'">
+              <h3>Top Scorers</h3>
+              <div class="statcard">
+                <div *ngFor="let item of cdata.data" class="player">
+                  <img src="{{getImageUrl(item.Teams)}}" alt="{{item.Teams}}">
+                  <p>{{item.Teams}} ({{item.GF}})</p>
+                </div>
+              </div>              
+          </div>
+          <div class="carousal-container playerstats defence" *ngSwitchCase="'topdefences'">
+            <h3>Top Defences</h3>
+            <div class="statcard">
+              <div *ngFor="let item of cdata.data" class="player">
+                <img src="{{getImageUrl(item.Teams)}}" alt="{{item.Teams}}">
+                <p>{{item.Teams}} ({{item.GA}})</p>
+              </div>
+            </div>              
+          </div>
+          <div class="carousal-container matchday" *ngSwitchCase="'matchday'">
+            <h3>{{cdata.data.MatchDay}}</h3>
+            <div class="matches">
+              <p *ngFor="let item of cdata.data.Games">
+                <span>{{item.Home}}</span>
+                <span>vs</span>
+                <span>{{item.Away}}</span>
+              </p>
+            </div>              
+          </div>
         </div>
       </ng-template>
     </p-carousel>

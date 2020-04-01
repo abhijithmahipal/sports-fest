@@ -8,6 +8,7 @@
 
 .carousal-container {
     width: 25em;
+    min-height: 24em;
 }
 
 .carousal-image {
@@ -16,6 +17,82 @@
 
 .carousal-video {
     width: 100%;
+}
+
+.playerstats {
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url('../../assets/footballnet.jpg');
+    color: white;
+}
+
+.playerstats.defence {
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url('../../assets/wall.jpg');
+    color: white;
+}
+
+.playerstats h3 {
+    text-align: center;
+    font-family: cursive;
+    font-weight: bold;
+    padding-top: 0.25em;
+}
+
+.statcard {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.player {    
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.25em;
+}
+
+.player:nth-child(odd) {
+    padding-left: 0.5em;    
+}
+
+.player:nth-child(even) {
+    padding-right: 0.5em;    
+}
+
+.player img {
+    width: 100%;
+    height: 11em;
+    border-radius: 50%;
+}
+
+.player p {
+    text-align: center;
+    font-weight: bold;    
+}
+
+.matchday {
+    background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url('../../assets/fire2.jpg');
+    background-size:cover;
+    text-align: center;
+    color: white;
+}
+
+.matchday h3 {
+    font-family: cursive;
+    padding-top: 0.25em;
+    font-weight: bold;
+}
+
+.matchday .matches {
+    padding: 1.5em 1em;
+}
+
+.matchday .matches p {
+    display: flex;    
+}
+
+.matchday .matches p span {
+    min-width: 31%;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -28,7 +105,17 @@
     .carousal-container {
         width: 15em;
     }
+
+    .matchday .matches p span  {
+        font-size: 1em;
+    }
+
+    .player img {
+        height: 8em;
+    }
 }
+
+
 
 @media only screen and (max-width: 560px) {
     .carousal-container {
