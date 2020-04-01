@@ -3,32 +3,32 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">Teams</th>
-        <th scope="col">Played</th>
-        <th scope="col">Wins</th>
-        <th scope="col">Draws</th>
-        <th scope="col">Loses</th>
-        <th scope="col">Points</th>
-        <th scope="col">Goals For</th>
-        <th scope="col">Goals Against</th>
-        <th scope="col">Goal Difference</th>
+        <th scope="col" class="teams">Teams</th>
+        <th scope="col" class="played">Played</th>
+        <th scope="col" class="wins">Wins</th>
+        <th scope="col" class="draws">Draws</th>
+        <th scope="col" class="loses">Loses</th>
+        <th scope="col" class="points">Points</th>
+        <th scope="col" class="gf">Goals For</th>
+        <th scope="col" class="ga">Goals Against</th>
+        <th scope="col" class="gd">Goal Difference</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of standings">
-        <th scope="row">
+        <th scope="row" class="teams">
           <div class="profile-pic">
             <img src="{{getImageUrl(item.Teams)}}" alt="{{item.Teams}}">
           </div> {{item.Teams}}
         </th>
-        <td>{{item.P}}</td>
-        <td>{{item.W}}</td>
-        <td>{{item.D}}</td>
-        <td>{{item.L}}</td>
-        <td>{{item.Pts}}</td>
-        <td>{{item.GF}}</td>
-        <td>{{item.GA}}</td>
-        <td>{{item.GD}}</td>
+        <td class="played">{{item.P}}</td>
+        <td class="wins">{{item.W}}</td>
+        <td class="draws">{{item.D}}</td>
+        <td class="loses">{{item.L}}</td>
+        <td class="points">{{item.Pts}}</td>
+        <td class="gf">{{item.GF}}</td>
+        <td class="ga">{{item.GA}}</td>
+        <td class="gd">{{item.GD}}</td>
       </tr>
     </tbody>
   </table>

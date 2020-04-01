@@ -24,3 +24,17 @@ table tbody tr:nth-last-child(-n + 2) {
     max-height: 2em;
     border-radius: 50%;
 }
+
+table tr td:not(.teams) {
+    text-align: center;
+}
+
+table tr th:not(.teams) {
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .wins, .draws, .loses, .gf, .ga {
+        display: none;
+    }
+}
