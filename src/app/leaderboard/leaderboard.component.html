@@ -12,6 +12,7 @@
         <th scope="col" class="gf">Goals For</th>
         <th scope="col" class="ga">Goals Against</th>
         <th scope="col" class="gd">Goal Difference</th>
+        <th scope="col" class="form">Form</th>
       </tr>
     </thead>
     <tbody>
@@ -29,6 +30,11 @@
         <td class="gf">{{item.GF}}</td>
         <td class="ga">{{item.GA}}</td>
         <td class="gd">{{item.GD}}</td>
+        <td class="form">
+          <div>
+            <span *ngFor="let item of item.Form" [ngClass]="{'win': item === 'W', 'draw': item === 'D', 'lose': item === 'L'}">{{item}}</span>
+          </div> 
+        </td>
       </tr>
     </tbody>
   </table>

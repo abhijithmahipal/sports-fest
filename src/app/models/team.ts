@@ -8,4 +8,5 @@ export class Team {
     GA: number;
     GD: number;
     W: number;
+    Form: string[];
 }

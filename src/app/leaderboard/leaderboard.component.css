@@ -33,8 +33,45 @@ table tr th:not(.teams) {
     text-align: center;
 }
 
+table tr .form div {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+}
+
+table tr .form div span {
+    font-size: 0.75em;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 0.25em;
+    min-width: 1.6em;
+    min-height: 1.6em;
+    padding: 1em;
+    font-weight: bold;
+    color: white;
+}
+
+.form .win {
+    background-color: #21be21;
+}
+
+.form .draw {
+    background-color: #ffc800de;
+}
+
+.form .lose {
+    background-color: #e94848f7;
+}
+
 @media only screen and (max-width: 768px) {
-    .wins, .draws, .loses, .gf, .ga {
+    .wins, .draws, .loses, .gf, .ga, .gd {
         display: none;
+    }
+
+    table tr .form div span {
+        font-size: 0.75em;
+        min-width: 0.75em;
+        min-height: 0.75em;
+        padding: 0.5em;
     }
 }
