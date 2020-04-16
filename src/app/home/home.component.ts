@@ -72,6 +72,11 @@ export class HomeComponent implements OnInit {
     });
     this.carousalData.push({
       carousalType: "image",
+      source: '../../assets/matchfinal.jpg'
+    });
+
+    this.carousalData.push({
+      carousalType: "image",
       source: '../../assets/ehiring.jpg'
     });
     this.carousalData.push({
