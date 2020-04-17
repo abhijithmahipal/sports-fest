@@ -65,14 +65,15 @@ export class HomeComponent implements OnInit {
 
   initCarousalData() {
     this.carousalData.push({
+      carousalType: "image",
+      source: '../../assets/matchfinal.jpg'
+    });
+
+    this.carousalData.push({
       carousalType: "video",
       source: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/e481beb9627f70c3a57589ae05165ed6_screen.mp4?ts=1584858457',
       poster: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/e481beb9627f70c3a57589ae05165ed6_screen.jpg?ts=1584858457',
       type: 'video/mp4'
-    });
-    this.carousalData.push({
-      carousalType: "image",
-      source: '../../assets/matchfinal.jpg'
     });
 
     this.carousalData.push({
