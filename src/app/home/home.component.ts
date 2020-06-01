@@ -26,20 +26,17 @@ export class HomeComponent implements OnInit {
     this.spinner.show();
     this.initCarousalData();
 
-    this.teamService.getMatchDay().subscribe((x) => {
-      this.matchDay = 'Match Day '+ (x[0].P + 1);
-      
-      this.teamService.getFixtures()
-        .then(x => {
-          this.presentFixture = x.find(m => m.MatchDay == this.matchDay.toString());
-          
-          this.carousalData.push({
-            carousalType: 'matchday',
-            data: this.presentFixture
-          });
-          
-        });    
-    });
+    // this.teamService.getMatchDay().subscribe((x) => {
+    //   this.matchDay = 'Match Day '+ (x[0].P + 1);
+    //   this.teamService.getFixtures()
+    //     .then(x => {
+    //       this.presentFixture = x.find(m => m.MatchDay === this.matchDay.toString());
+    //       this.carousalData.push({
+    //         carousalType: 'matchday',
+    //         data: this.presentFixture
+    //       });
+    //     });
+    // });
 
     this.teamService.getTopScorers().subscribe(x => { 
       this.topScorers = x;
@@ -48,7 +45,7 @@ export class HomeComponent implements OnInit {
         carousalType: 'topscorers',
         data: this.topScorers
       });
-    });    
+    });
 
     this.teamService.getBestDefences().subscribe(x => {
       this.topDefences = x;
@@ -57,33 +54,18 @@ export class HomeComponent implements OnInit {
         carousalType: 'topdefences',
         data: this.topDefences
       });
-    });  
+    });
 
-    this.spinner.hide();         
+    this.spinner.hide();
   }
 
 
   initCarousalData() {
     this.carousalData.push({
-      carousalType: "image",
-      source: '../../assets/matchfinal.jpg'
+      carousalType: 'image',
+      source: '../../assets/s1result.jpg'
     });
 
-    this.carousalData.push({
-      carousalType: "video",
-      source: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/e481beb9627f70c3a57589ae05165ed6_screen.mp4?ts=1584858457',
-      poster: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/e481beb9627f70c3a57589ae05165ed6_screen.jpg?ts=1584858457',
-      type: 'video/mp4'
-    });
-
-    this.carousalData.push({
-      carousalType: "image",
-      source: '../../assets/ehiring.jpg'
-    });
-    this.carousalData.push({
-      carousalType: "image",
-      source: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/26363223d4dc8f5ce673428802ea988a_screen.jpg?ts=1583388529'
-    });
     this.responsiveOptions = [
       {
         breakpoint: '12000',
@@ -104,6 +86,6 @@ export class HomeComponent implements OnInit {
   }
 
   getImageUrl(name) {
-    return "../assets/profilePics/" + name + ".jpg";
+    return '../assets/profilePics/' + name + '.jpg';
   }
 }
