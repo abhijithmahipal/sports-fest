@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   topDefences: Team[];
   presentFixture: Fixture;
 
-  constructor(private teamService: TeamService, private spinner: NgxSpinnerService) {   
+  constructor(private teamService: TeamService, private spinner: NgxSpinnerService) {
   }
 
   ngOnInit() {
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     //     });
     // });
 
-    this.teamService.getTopScorers().subscribe(x => { 
+    this.teamService.getTopScorers().subscribe(x => {
       this.topScorers = x;
 
       this.carousalData.push({

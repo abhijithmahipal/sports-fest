@@ -40,7 +40,7 @@ export class TeamService {
   }
 
   getFixtures() {
-    return this.http.get<Fixture[]>('../assets/fixture.json').toPromise();
+    return this.http.get<Fixture[]>('../assets/schedule.json').toPromise();
   }
 
   addTeam(teamData: Team) {
