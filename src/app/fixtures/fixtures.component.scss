@@ -1,0 +1,41 @@
+.fixture {
+    margin: 1rem auto;
+    background-color: white;
+    padding: 0;
+    .match-section {
+        .date-row {
+            line-height: 45px;
+            background-color: #f9f9fa;
+            font-size: larger;
+            font-weight: 500;
+            padding: 0 10px;
+            text-align: center;
+            cursor: pointer;
+            &:hover {
+                background-color: #eeeeee;
+            }
+        }
+        .match-row {
+            margin: 5px auto;
+            color: #003e5f;
+            cursor: pointer;
+            height: 70px;
+            line-height: 70px;
+            align-items: center;
+            justify-items: center;
+            font-size: larger;
+            &:hover {
+                background-color: #eeeeee;
+            }
+            .match-items {
+                margin: 0 auto;
+                text-align: center;
+                img {
+                    height: 40px;
+                    width: 40px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

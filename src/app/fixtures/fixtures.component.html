@@ -1,7 +1,17 @@
-<div *ngFor="let date of datewiseFixture">
-  <div *ngFor="let match of date; let i = index">
-    <h4 *ngIf="i == 0">{{match.date}}</h4>
-    {{ match.game }}
-    {{ match.score }}
+<div class="container fixture">
+  <div class="match-section" *ngFor="let date of datewiseFixture">
+    <div  *ngFor="let match of date; let i = index">
+      <div class="date-row" *ngIf="i == 0">
+      {{ match.date }}
+      </div>
+      <div class="match-row row">
+        <div class="match-items col">
+          <img *ngIf="match.game" src="../../assets/profilePics/{{getHome(match.game)}}.jpg" alt="">
+          {{ match.game }}
+          {{ match.score }}
+          <img *ngIf="match.game" src="../../assets/profilePics/{{getAway(match.game)}}.jpg" alt="">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
