@@ -1,10 +1,7 @@
-<div class="fixtures">
-<div class="fixture" *ngFor="let fixture of fixtures">
-    <div class="matchday">
-      <h2>{{fixture.date}}</h2>
-    </div>
-    <div class="games">
-      <p>{{fixture.game}}</p>
-    </div>
-</div>
+<div *ngFor="let date of datewiseFixture">
+  <div *ngFor="let match of date; let i = index">
+    <h4 *ngIf="i == 0">{{match.date}}</h4>
+    {{ match.game }}
+    {{ match.score }}
+  </div>
 </div>

@@ -5,7 +5,22 @@
 .home .header {
     padding: 1em 0;
 }
-
+.home .teams {
+    padding: 0;
+    display: flex;
+}
+.imageDiv{
+    padding: 15px;
+    cursor: pointer;
+}
+.imageDiv :hover{
+    border:6px gold solid
+}
+.teamImage{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
 .carousal-container {
     width: 25em;
     min-height: 24em;
@@ -121,8 +136,4 @@
     .carousal-container {
         width: 16em;
     }
-}
-.banner{
-    width: 100%;
-    margin: 0px;
 }

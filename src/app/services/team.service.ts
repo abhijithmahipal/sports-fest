@@ -40,7 +40,8 @@ export class TeamService {
   }
 
   getFixtures() {
-    return this.http.get<Fixture[]>('../assets/schedule.json').toPromise();
+    // return this.http.get<Fixture[]>('../assets/schedule.json').toPromise();
+    return this.db.collection<Fixture>('fixture').valueChanges();
   }
 
   addTeam(teamData: Team) {
@@ -48,7 +49,11 @@ export class TeamService {
     this.db.collection('teams').add(data);
     // this.firestore.doc('teams/' + form.value.id).update(data); //to update row.
   }
-
+  addFixture(teamData: Fixture) {
+    const data = Object.assign({}, teamData);
+    this.db.collection('fixture').add(data);
+    // this.firestore.doc('teams/' + form.value.id).update(data); //to update row.
+  }
   updateScore(homeTeam: StandingsOutput, awayTeam: StandingsOutput, homeGoals:number, awayGoals:number) {
     var homeTeamUpdate = Object.assign({}, homeTeam.data);
     var awayTeamUpdate = Object.assign({}, awayTeam.data);
