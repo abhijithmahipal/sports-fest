@@ -17,40 +17,38 @@ import { HomeComponent } from './home/home.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { FixturesComponent } from './fixtures/fixtures.component';
-import {CarouselModule} from 'primeng/carousel';
+import { CarouselModule } from 'primeng/carousel';
 import { UpdatescoreComponent } from './updatescore/updatescore.component';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToggleDirective } from './toggle.directive';
+import { SeasonOneArchiveComponent } from './season-one-archive/season-one-archive.component';
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      HeaderComponent,
-      FooterComponent,
-      HomeComponent,
-      LeaderboardComponent,
-      AboutusComponent,
-      FixturesComponent,
-      UpdatescoreComponent,
-      ToggleDirective
-   ],
-   imports: [
-      BrowserModule,
-      AppRoutingModule,
-      HttpClientModule,
-      AngularFireModule.initializeApp(environment.firebaseConfig),
-      AngularFirestoreModule,
-      FormsModule,
-      BrowserAnimationsModule,
-      ToastrModule.forRoot(),
-      CarouselModule,
-      NgxSpinnerModule
-   ],
-   providers: [
-      TeamService
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    LeaderboardComponent,
+    AboutusComponent,
+    FixturesComponent,
+    UpdatescoreComponent,
+    ToggleDirective,
+    SeasonOneArchiveComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    CarouselModule,
+    NgxSpinnerModule,
+  ],
+  providers: [TeamService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
