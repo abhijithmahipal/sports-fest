@@ -1,22 +1,15 @@
-.home  .data {
-    margin: 1em 0;
-}
-
-.home .header {
-    padding: 1em 0;
-}
 .home .teams {
     padding: 0;
     display: flex;
 }
-.imageDiv{
+.imageDiv {
     padding: 15px;
     cursor: pointer;
 }
-.imageDiv :hover{
-    border:6px gold solid
+.imageDiv :hover {
+    border: 6px gold solid;
 }
-.teamImage{
+.teamImage {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -35,12 +28,12 @@
 }
 
 .playerstats {
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url('../../assets/footballnet.jpg');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url("../../assets/footballnet.jpg");
     color: white;
 }
 
 .playerstats.defence {
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url('../../assets/wall.jpg');
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url("../../assets/wall.jpg");
     color: white;
 }
 
@@ -56,7 +49,7 @@
     flex-wrap: wrap;
 }
 
-.player {    
+.player {
     width: 50%;
     height: 50%;
     display: flex;
@@ -65,11 +58,11 @@
 }
 
 .player:nth-child(odd) {
-    padding-left: 0.5em;    
+    padding-left: 0.5em;
 }
 
 .player:nth-child(even) {
-    padding-right: 0.5em;    
+    padding-right: 0.5em;
 }
 
 .player img {
@@ -80,12 +73,12 @@
 
 .player p {
     text-align: center;
-    font-weight: bold;    
+    font-weight: bold;
 }
 
 .matchday {
-    background:linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url('../../assets/fire2.jpg');
-    background-size:cover;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(10, 1, 6, 0.68)), url("../../assets/fire2.jpg");
+    background-size: cover;
     text-align: center;
     color: white;
 }
@@ -101,7 +94,7 @@
 }
 
 .matchday .matches p {
-    display: flex;    
+    display: flex;
 }
 
 .matchday .matches p span {
@@ -121,7 +114,7 @@
         width: 15em;
     }
 
-    .matchday .matches p span  {
+    .matchday .matches p span {
         font-size: 1em;
     }
 
@@ -130,10 +123,21 @@
     }
 }
 
-
-
 @media only screen and (max-width: 560px) {
     .carousal-container {
         width: 16em;
     }
+}
+
+//v2 dashboard
+.head-toppers {
+    line-height: 30px;
+    text-align: center;
+    margin: 10px auto;
+}
+.tablecard {
+    margin: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
 }

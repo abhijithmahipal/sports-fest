@@ -13,11 +13,11 @@
     <div class="imageDiv"><img class="teamImage" src="../../assets/profilePics/Jeese.jpg" alt=""></div>
     <div class="imageDiv"><img class="teamImage" src="../../assets/profilePics/Mithun.jpg" alt=""></div>
   </div>
-  <div class="header">
+  <div class="my-1 row">
     <h1>Welcome!</h1>
   </div>
-  <div class="data">
-    <p-carousel [value]="carousalData" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+  <div class="my-1 row">
+    <!-- <p-carousel [value]="carousalData" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
       <ng-template let-cdata pTemplate="item">
         <div [ngSwitch]="cdata.carousalType">
           <div class="carousal-container" *ngSwitchCase="'video'">
@@ -60,6 +60,45 @@
           </div>
         </div>
       </ng-template>
-    </p-carousel>
-  </div>  
+    </p-carousel> -->
+    <div class="col-sm-9">
+      
+    </div>
+    <div class="col-sm-3">
+      <h6 class="head-toppers">Top Scorers</h6>
+      <div class="tablecard">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Total Goals</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of topScorers">
+            <td>{{item.Teams}}</td>
+            <td>{{item.GF}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h6 class="head-toppers">Top Defences</h6>
+    <div class="tablecard">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>Total Goals Conceded</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of topScorers">
+            <td>{{item.Teams}}</td>
+            <td>{{item.GA}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </div>
 </div>
