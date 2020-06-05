@@ -1,3 +1,5 @@
+import { FixturesOutput } from './../models/fixturesOutput';
+import { Fixture } from './../models/fixture';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { StandingsOutput } from './../models/standingsOutput';
@@ -7,6 +9,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { Component, OnInit } from '@angular/core';
 import { element, promise } from 'protractor';
 import { ThrowStmt } from '@angular/compiler';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-updatescore',
@@ -25,6 +28,7 @@ export class UpdatescoreComponent implements OnInit {
   homeGoals: number;
   awayGoals: number;
   password: string;  
+  fixtures: FixturesOutput[] = new Array<FixturesOutput>();
 
   showMatchSelector: boolean = false;
   showErrorMsg: boolean = false;
@@ -59,6 +63,18 @@ export class UpdatescoreComponent implements OnInit {
 
         this.spinner.hide();
       });
+
+      this.teamService.getAllMatches().snapshotChanges()
+        .pipe(map(changes => 
+          changes.map(c => {
+            return {
+              id: c.payload.doc.id,
+              data: c.payload.doc.data()
+            };
+          
+        }))).subscribe(x => {
+          this.fixtures = x;
+        });
   }
 
   initHomeTeam() {
@@ -110,14 +126,23 @@ export class UpdatescoreComponent implements OnInit {
     var awayTeamUpdateIndex = this.teamsData.findIndex(x => x.data.Teams === this.selectedAwayTeam.Teams);
     var awayTeamUpdate = this.teamsData[awayTeamUpdateIndex];    
 
+    var matchString = this.selectedHomeTeam.Teams + " vs " + this.selectedAwayTeam.Teams;
+    var matchScore = this.homeGoals + " - " + this.awayGoals;
+
+    var selectedMatch = _.find(this.fixtures, x => x.data.game.replace(/\s/g, "") == matchString.replace(/\s/g, ""));
+    selectedMatch.data.score = matchScore;        
+
     if(this.password === "halamadrid") {
       if(this.homeGoals !== undefined && this.awayGoals !== undefined && this.selectedHomeTeam && this.selectedAwayTeam) {
-        this.teamService.updateScore(homeTeamUpdate, awayTeamUpdate, this.homeGoals, this.awayGoals)
-          .finally(() => {
+        this.teamService.updateFixtureScore(selectedMatch.id, selectedMatch.data)
+          .then(() => {
+            return this.teamService.updateScore(homeTeamUpdate, awayTeamUpdate, this.homeGoals, this.awayGoals);
+          })
+          .then(() => {
             this.isButtonDisabled = false;
             this.spinner.hide();
             this.router.navigate(['/leaderboard'])
-          });   
+          });            
       }           
       else {
         this.isButtonDisabled = false;
