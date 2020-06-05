@@ -8,10 +8,10 @@
         <th scope="col" class="wins">Wins</th>
         <th scope="col" class="draws">Draws</th>
         <th scope="col" class="loses">Loses</th>
-        <th scope="col" class="points">Points</th>
         <th scope="col" class="gf">Goals For</th>
         <th scope="col" class="ga">Goals Against</th>
         <th scope="col" class="gd">Goal Difference</th>
+        <th scope="col" class="points">Points</th>
         <th scope="col" class="form">Form</th>
       </tr>
     </thead>
@@ -26,10 +26,10 @@
         <td class="wins">{{item.W}}</td>
         <td class="draws">{{item.D}}</td>
         <td class="loses">{{item.L}}</td>
-        <td class="points">{{item.Pts}}</td>
         <td class="gf">{{item.GF}}</td>
         <td class="ga">{{item.GA}}</td>
         <td class="gd">{{item.GD}}</td>
+        <td class="points">{{item.Pts}}</td>
         <td class="form">
           <div>
             <span *ngFor="let item of item.Form" [ngClass]="{'win': item === 'W', 'draw': item === 'D', 'lose': item === 'L'}">{{item}}</span>

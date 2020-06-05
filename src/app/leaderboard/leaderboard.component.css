@@ -1,15 +1,22 @@
 h1 {
     padding: 1em 0;
 }
-
+.standings-table{
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+    transition: 0.3s;
+    margin-bottom: 3rem;
+}
 table tbody tr:nth-child(-n + 2) {
-    background-color: lightgreen;
+    background-color: rgb(216, 241, 216);
 }
 
 table tbody tr:nth-last-child(-n + 2) {
-    background-color: lightsalmon;
+    background-color: rgb(247, 208, 208);
 }
-
+table{
+    margin-bottom: 0;
+}
 .standings-table {
     overflow-x: auto;
 }

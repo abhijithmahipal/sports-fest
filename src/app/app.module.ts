@@ -22,6 +22,7 @@ import { UpdatescoreComponent } from './updatescore/updatescore.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToggleDirective } from './toggle.directive';
 import { SeasonOneArchiveComponent } from './season-one-archive/season-one-archive.component';
+import { RulesComponent } from './rules/rules.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SeasonOneArchiveComponent } from './season-one-archive/season-one-archi
     UpdatescoreComponent,
     ToggleDirective,
     SeasonOneArchiveComponent,
+    RulesComponent,
   ],
   imports: [
     BrowserModule,
