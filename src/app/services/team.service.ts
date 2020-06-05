@@ -18,13 +18,19 @@ import {NgxSpinnerService} from 'ngx-spinner';
 export class TeamService {
   formData: Team;
   standingsRef: AngularFirestoreCollection<Team> = null;
+  fixtureRef: AngularFirestoreCollection<Fixture> = null;
 
   constructor(private db: AngularFirestore, private http: HttpClient, private spinner: NgxSpinnerService) { 
-    this.standingsRef = this.db.collection<Team>('standings')
+    this.standingsRef = this.db.collection<Team>('standings');
+    this.fixtureRef = this.db.collection<Fixture>('fixture');
   }
 
   getTeamStandings() {    
     return this.standingsRef;
+  }
+
+  getAllMatches() {
+    return this.fixtureRef;
   }
 
   getMatchDay() {
@@ -115,5 +121,9 @@ export class TeamService {
 
   getTeamSquad(id: string) {
     return this.db.firestore.collection('players').where('teamName', '==', 'teams/' + id);
+  }
+
+  updateFixtureScore(id: string, data: Fixture) {
+    return this.fixtureRef.doc(id).update(data);
   }
 }
