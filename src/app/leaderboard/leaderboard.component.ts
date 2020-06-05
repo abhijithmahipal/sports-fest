@@ -7,7 +7,7 @@ import { Team } from '../models/team';
 @Component({
   selector: 'leaderboard',
   templateUrl: './leaderboard.component.html',
-  styleUrls: ['./leaderboard.component.css'],
+  styleUrls: ['./leaderboard.component.scss'],
   providers: [TeamService]
 })
 export class LeaderboardComponent implements OnInit {
