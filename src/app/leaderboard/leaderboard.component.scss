@@ -1,15 +1,35 @@
 h1 {
     padding: 1em 0;
 }
-
+.standings-table {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
+    transition: 0.3s;
+    margin-bottom: 3rem;
+}
 table tbody tr:nth-child(-n + 2) {
-    background-color: lightgreen;
+    border-left: 15px rgb(126, 247, 126) solid;
+    &:hover {
+        background-color: #f9f9fa;
+    }
 }
 
 table tbody tr:nth-last-child(-n + 2) {
-    background-color: lightsalmon;
+    border-left: 15px rgb(241, 140, 140) solid;
+    &:hover {
+        background-color: #f9f9fa;
+    }
 }
-
+.row-team {
+    border-left: 15px rgb(231, 247, 140) solid;
+    cursor: pointer;
+}
+.row-team:hover {
+    background-color: #f9f9fa;
+}
+table {
+    margin-bottom: 0;
+}
 .standings-table {
     overflow-x: auto;
 }
@@ -64,7 +84,12 @@ table tr .form div span {
 }
 
 @media only screen and (max-width: 768px) {
-    .wins, .draws, .loses, .gf, .ga, .gd {
+    .wins,
+    .draws,
+    .loses,
+    .gf,
+    .ga,
+    .gd {
         display: none;
     }
 
