@@ -18,7 +18,7 @@ import * as _ from 'lodash';
 })
 export class UpdatescoreComponent implements OnInit {
 
-  leastMatchDay: number = 18;
+  leastMatchDay = 18;
   teamsData: StandingsOutput[];
   selectedMatchDay: number;
   homeTeams: Team[] = new Array<Team>();
@@ -27,13 +27,13 @@ export class UpdatescoreComponent implements OnInit {
   selectedAwayTeam: Team = new Team();
   homeGoals: number;
   awayGoals: number;
-  password: string;  
+  password: string;
   fixtures: FixturesOutput[] = new Array<FixturesOutput>();
 
-  showMatchSelector: boolean = false;
-  showErrorMsg: boolean = false;
-  isIncorrectPassword: boolean = false;
-  isButtonDisabled: boolean = false;
+  showMatchSelector = false;
+  showErrorMsg = false;
+  isIncorrectPassword = false;
+  isButtonDisabled = false;
 
   constructor(private teamService: TeamService, private spinner: NgxSpinnerService, private router: Router) { }
 
@@ -50,12 +50,11 @@ export class UpdatescoreComponent implements OnInit {
       ).subscribe(x => {
         this.teamsData = x;
 
-        this.teamsData.forEach(element => {         
+        this.teamsData.forEach(element => {
           if (element.data.P < this.leastMatchDay) {
             this.leastMatchDay = element.data.P;
           }
         });
-        
         this.selectedMatchDay = this.leastMatchDay + 1;
 
         this.initAwayTeam();
@@ -71,7 +70,6 @@ export class UpdatescoreComponent implements OnInit {
               id: c.payload.doc.id,
               data: c.payload.doc.data()
             };
-          
         }))).subscribe(x => {
           this.fixtures = x;
         });
@@ -87,7 +85,7 @@ export class UpdatescoreComponent implements OnInit {
 
   initAwayTeam() {
     this.awayTeams = new Array<Team>();
-    this.teamsData.forEach(element => { 
+    this.teamsData.forEach(element => {
       if(element.data.P < this.selectedMatchDay)
         this.awayTeams.push(element.data)
     });
@@ -103,36 +101,36 @@ export class UpdatescoreComponent implements OnInit {
     if (!this.selectedAwayTeam.Teams || this.selectedHomeTeam.Teams === this.selectedAwayTeam.Teams) {
       this.initAwayTeam();
       this.selectedAwayTeam = new Team();
-      var index = this.awayTeams.findIndex(x => x.Teams === this.selectedHomeTeam.Teams);
+      const index = this.awayTeams.findIndex(x => x.Teams === this.selectedHomeTeam.Teams);
       this.awayTeams.splice(index, 1);
-    }    
+    }
   }
 
   onAwayTeamChange() {
     if(!this.selectedHomeTeam.Teams || this.selectedAwayTeam.Teams === this.selectedHomeTeam.Teams) {
       this.initHomeTeam();
-      this.selectedHomeTeam = new Team();    
-      var index = this.homeTeams.findIndex(x => x.Teams === this.selectedAwayTeam.Teams);
-      this.homeTeams.splice(index, 1);      
+      this.selectedHomeTeam = new Team();
+      const index = this.homeTeams.findIndex(x => x.Teams === this.selectedAwayTeam.Teams);
+      this.homeTeams.splice(index, 1);
     }
   }
 
   updateScore() {
     this.isButtonDisabled = true;
     this.spinner.show();
-    var homeTeamUpdateIndex = this.teamsData.findIndex(x => x.data.Teams === this.selectedHomeTeam.Teams);
-    var homeTeamUpdate = this.teamsData[homeTeamUpdateIndex];
+    const homeTeamUpdateIndex = this.teamsData.findIndex(x => x.data.Teams === this.selectedHomeTeam.Teams);
+    const homeTeamUpdate = this.teamsData[homeTeamUpdateIndex];
 
-    var awayTeamUpdateIndex = this.teamsData.findIndex(x => x.data.Teams === this.selectedAwayTeam.Teams);
-    var awayTeamUpdate = this.teamsData[awayTeamUpdateIndex];    
+    const awayTeamUpdateIndex = this.teamsData.findIndex(x => x.data.Teams === this.selectedAwayTeam.Teams);
+    const awayTeamUpdate = this.teamsData[awayTeamUpdateIndex];
 
-    var matchString = this.selectedHomeTeam.Teams + " vs " + this.selectedAwayTeam.Teams;
-    var matchScore = this.homeGoals + " - " + this.awayGoals;
+    const matchString = this.selectedHomeTeam.Teams + ' vs ' + this.selectedAwayTeam.Teams;
+    const matchScore = this.homeGoals + ' - ' + this.awayGoals;
 
-    var selectedMatch = _.find(this.fixtures, x => x.data.game.replace(/\s/g, "") == matchString.replace(/\s/g, ""));
-    selectedMatch.data.score = matchScore;        
+    const selectedMatch = _.find(this.fixtures, x => x && x.data && x.data.game && x.data.game.replace(/\s/g, '') == matchString.replace(/\s/g, ''));
+    selectedMatch.data.score = matchScore;
 
-    if(this.password === "halamadrid") {
+    if(this.password === 'halamadrid') {
       if(this.homeGoals !== undefined && this.awayGoals !== undefined && this.selectedHomeTeam && this.selectedAwayTeam) {
         this.teamService.updateFixtureScore(selectedMatch.id, selectedMatch.data)
           .then(() => {
@@ -142,20 +140,19 @@ export class UpdatescoreComponent implements OnInit {
             this.isButtonDisabled = false;
             this.spinner.hide();
             this.router.navigate(['/leaderboard'])
-          });            
-      }           
+          });
+      }
       else {
         this.isButtonDisabled = false;
         this.spinner.hide();
         this.showErrorMsg = true; 
-      }        
+      }
     }
     else {
       this.isButtonDisabled = false;
       this.spinner.hide();
       this.isIncorrectPassword = true;
     }
-         
   }
 
 }
