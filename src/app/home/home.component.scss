@@ -255,4 +255,14 @@ strong {
             background: darken($color_orange, 10%);
         }
     }
+    &.yellow {
+        background: #d5f097;
+
+        &:hover {
+            background: darken(#d5f097, 10%);
+        }
+    }
+}
+.cup-icon{
+    width: 66%;
 }
