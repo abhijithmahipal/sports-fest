@@ -61,44 +61,71 @@
         </div>
       </ng-template>
     </p-carousel> -->
-    <div class="col-sm-9">
-      
-    </div>
-    <div class="col-sm-3">
-      <h6 class="head-toppers">Top Scorers</h6>
-      <div class="tablecard">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Team</th>
-            <th>Total Goals</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of topScorers">
-            <td>{{item.Teams}}</td>
-            <td>{{item.GF}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <h6 class="head-toppers">Top Defences</h6>
-    <div class="tablecard">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Team</th>
-            <th>Total Goals Conceded</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of topDefences">
-            <td>{{item.Teams}}</td>
-            <td>{{item.GA}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="col-xl-4 col-sm-12">
+          <div class="tile purple">
+            <h3 class="title">Title Winner - Season 2</h3>
+            <p>Akhil KJ</p>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-12">
+          <div class="tile orange">
+            <h3 class="title">Runner Up</h3>
+            <p>Mithun S</p>
+          </div>
+        </div>
+        <div class="col-xl-4 col-sm-12">
+          <div class="tile red">
+            <h3 class="title">Emerging Player of the season</h3>
+            <p>Arun Dev</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-4 col-sm-12">
+          <div class="tile green">
+          <h6 class="title">Top Defences</h6>
+          <div class="tablecard">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>Total Goals Conceded</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of topDefences">
+                  <td>{{item.Teams}}</td>
+                  <td>{{item.GA}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+        <div class="col-xl-4 col-sm-12">
+          <div class="tile blue">
+          <h6 class="title">Top Scorers</h6>
+          <div class="tablecard">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>Total Goals</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of topScorers">
+                  <td>{{item.Teams}}</td>
+                  <td>{{item.GF}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
